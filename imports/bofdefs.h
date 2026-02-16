@@ -64,7 +64,9 @@ typedef struct _BOF_WINTRUST_DATA {
 } BOF_WINTRUST_DATA;
 
 #define WTD_UI_NONE 2
+#ifndef WTD_REVOKE_NONE
 #define WTD_REVOKE_NONE 0
+#endif
 #define WTD_CHOICE_FILE 1
 
 #ifdef BOF

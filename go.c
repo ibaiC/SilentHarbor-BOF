@@ -6,9 +6,7 @@
 #define STATUS_SUCCESS                   0x00000000L
 #define STATUS_INFO_LENGTH_MISMATCH      0xC0000004L
 
-typedef int bool;
-#define true 1
-#define false 0
+#include <stdbool.h>
 
 // SYSCALLS USED:
 // Sw3NtAllocateVirtualMemory
@@ -227,7 +225,7 @@ LONG CheckFileSignature(const char* filePath) {
     WinTrustData.dwStateAction = WTD_REVOCATION_CHECK_NONE;
     WinTrustData.dwProvFlags = 0;  
 
-    LONG hr = WINTRUST$WinVerifyTrust(NULL, &PolicyGuid, &WinTrustData);
+    LONG hr = WINTRUST$WinVerifyTrust(NULL, (GUID*)&PolicyGuid, &WinTrustData);
 
     MyFree(wFilePath);
     return hr;
